@@ -1,0 +1,50 @@
+// ===== VAR ================
+$black: #000
+$white: #f5f6fa
+$grey: #dcdde1
+$grey2: #886666
+$grey3: #663333
+$dred: #c23616
+$lred: #e84118
+$dblue: #192a56
+$lblue: #273c75
+
+@font-face
+	font-family: Oswald
+	src: url("../fonts/Oswald-Regular.woff2") format("woff2")
+	src: url("../fonts/Oswald-regular.woff") format("woff")
+
+
+//! Параметры контейнера
+// width: 90vw
+// max-width: 800px
+// height: auto
+// padding: 40px 10px
+
+.popup
+	cursor: auto
+	color: $grey
+	::selection
+		background: $grey2
+	::-moz-selection
+		background: $grey2
+
+	&__h2
+		margin: 0 0 10px 0
+
+		font-size: 20px
+		font-weight: 600
+		text-transform: uppercase
+
+	&__img
+	&__a
+		font-size: 18px
+		
+	&__h3
+	&__text
+		margin: 10px 0
+		font-size: 18px
+
+	&__important
+		color: $white
+		text-shadow: 0 0 10px $dred, 0 0 20px $dred

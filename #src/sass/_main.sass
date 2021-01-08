@@ -1,0 +1,500 @@
+// ===== VAR ================
+$black: #000
+$white: #f5f6fa
+$grey: #dcdde1
+$grey2: #886666
+$grey3: #663333
+$dred: #c23616
+$lred: #e84118
+$dblue: #192a56
+$lblue: #273c75
+
+@font-face
+	font-family: Oswald
+	src: url("../fonts/Oswald-Regular.woff2") format("woff2")
+	src: url("../fonts/Oswald-regular.woff") format("woff")
+
+
+// !===== STYLES ================
+*
+	transform-style: preserve-3d
+	// cursor: none
+
+.body
+	position: absolute
+
+	width: 100vw
+	height: 100vh
+	overflow: hidden
+	background-color: $dred
+	background: radial-gradient(circle at center, $dred 0%, $black 100%)
+
+	color: $white
+	font-family: sans-serif
+
+	cursor: none
+
+	transition: background 0.6s
+
+	&--popup-opened
+		background: radial-gradient(circle at center, $dblue 0%, $black 100%)
+
+.canvas
+	position: absolute
+	z-index: 0
+	top: 0
+	left: 0
+
+.wrapper
+	position: absolute
+	z-index: 1
+	top: 50vh
+	left: 50vw
+	
+	width: 0
+	height: 0
+
+	display: flex
+	justify-content: center
+	align-items: center
+
+	perspective: 2000px
+
+	transform: translateZ(300px)
+
+.bottom-line
+	position: absolute
+	bottom: 0
+	left: 0
+
+	width: 100vw
+	padding: 5px
+	background-color: rgba($black, 0.5)
+	text-align: center
+
+// ! === MENU ===
+
+.central-btn
+	position: absolute
+	z-index: 1
+
+	width: 200px
+	height: 80px
+
+	transform: translateZ(200px)
+
+	border: 1px solid black
+
+.rotator
+	position: absolute
+	z-index: 0
+
+	// transition: transform 0.1s
+
+	transform: rotateX(7deg) rotateY(-7deg)
+
+.menu
+	position: absolute
+	z-index: 2
+	top: 0px
+	left: 0px
+
+	width: 0px
+	height: 0px
+
+	display: flex
+	justify-content: center
+	align-items: center
+
+	// transition: transform 0.3s 0.3s
+
+	&--hidden
+		// transition: transform 0.3s
+		transform: scale(0)
+
+	&__circles
+		position: absolute
+		z-index: -1
+
+		width: 300px
+		height: 300px
+
+		display: flex
+		justify-content: center
+		align-items: center
+
+		transform: translateZ(-150px)
+
+		perspective: 2000px
+
+	&__focus
+		position: absolute
+
+		width: 100%
+		height: 100%
+		
+		display: flex
+		justify-content: center
+		align-items: center
+
+		transition: transform 0.2s ease-in-out
+
+	&__circle
+		position: absolute
+		z-index: -1
+
+		border-radius: 50%
+
+		&_1
+			width: 270px
+			height: 270px
+
+			border: 70px solid rgba($grey3, 0.5)
+			border-bottom: 70px solid transparent
+
+			animation: circle 5s infinite alternate
+		&_2
+			width: 300px
+			height: 300px
+
+			border: 30px solid rgba($lred, 0.5)
+			border-bottom: 30px solid transparent
+
+			animation: circle 15s infinite alternate-reverse
+		&_3
+			width: 210px
+			height: 210px
+
+			border: 25px solid rgba($grey, 0.5)
+			border-bottom: 25px solid transparent
+
+			animation: circle 4s infinite alternate-reverse
+
+		@keyframes circle
+			0%
+				transform: rotate(0deg)
+			100%
+				transform: rotate(1080deg)
+
+	&__large-btn
+		position: absolute
+		z-index: 1
+
+		width: 300px
+		height: 100px
+
+		display: flex
+		flex-direction: row
+		justify-content: center
+		align-items: center
+
+		animation: ul-rotate 3s infinite alternate
+
+	&__names
+		width: 0px
+		height: 45px
+		overflow: visible
+
+		perspective: 2000px
+
+		transition: transform 0.2s, width 0.2s
+
+	&__name
+		user-select: none
+
+		position: absolute
+		top: 0
+		left: 0
+
+		width: 0px
+		overflow: hidden
+
+		font-size: 45px
+		text-transform: uppercase
+		font-family: sans-serif
+		font-weight: 900
+
+		transition: transform 0.2s, width 0.2s
+
+		transform: translateZ(2px)
+
+		&_1
+			color: $grey3
+		&_2
+			color: $grey2
+		&_3
+
+	&__logos
+		width: 100px
+		height: 100px
+
+		display: flex
+		justify-content: center
+		align-items: center
+
+		perspective: 2000px
+
+	&__logo
+		position: absolute
+
+		width: 85px
+		height: 85px
+		border-radius: 50%
+
+		transition: transform 0.2s, width 0.1s, height 0.1s
+
+		&_1
+			background-color: $grey3
+		&_2
+			background-color: $grey2
+		&_3
+			width: 100px
+			height: 100px
+			background-image: url(../img/crop.png)
+			background-size: 100%
+			background-repeat: no-repeat
+
+	&__nav
+		position: absolute
+		z-index: 1
+
+		width: 0px
+		height: 0px
+
+		transform: scale(0)
+
+	&__ul
+		position: absolute
+
+		width: 0px
+		height: 0px
+
+		display: flex
+		justify-content: center
+		align-items: center
+
+		animation: ul-rotate 3s infinite alternate
+
+		@keyframes ul-rotate
+			0%
+				transform: rotate(-3deg)
+			100%
+				transform: rotate(3deg)
+
+	&__li
+		position: absolute
+
+		width: 0px
+		height: 0px
+
+		opacity: 0
+
+		transform: rotate(0deg)
+
+.menu-li
+	display: flex
+	justify-content: center
+	align-items: center
+
+	&__button
+		position: absolute
+		top: -250px
+		
+		width: 200px
+		height: 38px
+
+	&__text
+		user-select: none
+
+		position: absolute
+		top: 0
+		left: 0
+
+		width: 100%
+		height: 100%
+		padding: 10px 0
+		text-align: center
+		border: 2px solid rgba($grey, 0.3)
+		border-radius: 10px
+
+		text-transform: uppercase
+		font-size: 18px
+
+		transition: transform 0.2s
+
+		&_1
+			color: $grey3
+		&_2
+			transform: translateZ(15px)
+			color: $grey2
+		&_3
+			transform: translateZ(30px)
+			background-color: rgba($dred, 0.3)
+			color: $white
+
+// ! === POPUP ===
+
+.main
+	position: absolute
+	z-index: 10
+
+	width: 0
+	height: 0
+
+	display: flex
+	justify-content: center
+	align-items: center
+
+	transform: translateZ(201px)
+
+	&--opened
+
+	&__tapfield
+		position: absolute
+
+		width: 0
+		height: 0
+
+		// cursor: pointer
+
+		&--opened
+			width: 100vw
+			height: 100vh
+
+	&__popup
+		position: absolute
+		overflow-x: hidden
+		overflow-y: auto
+
+		width: 80vw
+		max-width: 800px
+		height: auto
+		max-height: 80vh
+		padding: 40px 10px
+		background-color: rgba($black, 0.05)
+		// border-radius: 10px
+
+		transition: transform 0.3s
+
+		transform: scale(0)
+
+		&--opened
+			transition: transform 0.3s
+			transform: scale(1)
+
+		&_1
+		&_2
+		&_3
+		&_4
+		&_5
+		&_6
+
+	&__close
+		position: absolute
+		right: 10px
+		top: 10px
+
+		font-size: 30px
+		font-weight: 900
+
+		// cursor: pointer
+
+
+// ------------------
+// ! === CONTROL ===
+// ------------------
+
+.menu
+	transition: transform 0.1s
+	&__circles
+		&--opened
+		&--opened>.menu__focus_1
+			transform: translateZ(-45px)
+		&--opened>.menu__focus_2
+			transform: translateZ(125px)
+		&--opened>.menu__focus_3
+			transform: translateZ(95px)
+	&__large-btn
+		// &:hover .menu__names
+		// 	width: 180px
+		// &:hover .menu__name
+		// 	width: 180px
+	&__names
+		&--hover
+			width: 180px
+		&--hover>.menu__name
+			width: 180px
+		&--opened
+			width: 180px
+		&--opened>.menu__name
+			width: 180px
+		&--opened>.menu__name_2
+			transform: translateZ(25px)
+		&--opened>.menu__name_3
+			transform: translateZ(50px)
+	&__logos
+		&--opened
+		&--opened>.menu__logo
+		&--opened>.menu__logo_2
+			transform: translateZ(25px)
+		&--opened>.menu__logo_3
+			transform: translateZ(50px)
+
+	&__nav
+		&--opened
+			transform: scale(1)
+
+	&__ul
+
+		&--opened
+
+	&__li
+		transition: opacity 0.3s, transform 0.6s
+
+		&--opened
+
+			&:nth-child(1)
+				opacity: 1
+				transform: rotate(0deg)
+			&:nth-child(2)
+				opacity: 1
+				transform: rotate(60deg)
+			&:nth-child(3)
+				opacity: 1
+				transform: rotate(120deg)
+			&:nth-child(4)
+				opacity: 1
+				transform: rotate(180deg)
+			&:nth-child(5)
+				opacity: 1
+				transform: rotate(240deg)
+			&:nth-child(6)
+				opacity: 1
+				transform: rotate(300deg)
+
+.menu-li
+	&__button
+		transition: transform 0.6s
+
+		&:hover>.menu-li__text_1
+		&:hover>.menu-li__text_2
+			transform: translateZ(0px)
+		&:hover>.menu-li__text_3
+			transform: translateZ(0px)
+			// color: $white
+			background-color: rgba($white, 0.3)
+
+		&--opened
+
+			&.menu-li__button_1
+				transform: rotate(0deg)
+			&.menu-li__button_2
+				transform: rotate(-60deg)
+			&.menu-li__button_3
+				transform: rotate(-120deg)
+			&.menu-li__button_4
+				transform: rotate(-180deg)
+			&.menu-li__button_5
+				transform: rotate(-240deg)
+			&.menu-li__button_6
+				transform: rotate(-300deg)

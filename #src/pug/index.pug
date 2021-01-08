@@ -1,0 +1,60 @@
+include _admin.pug
+
+canvas#canvas
+.wrapper
+	//- без central-btn некорректно работает наведение на кнопку
+	button.central-btn
+	.rotator
+		.menu
+			.menu__circles
+				.menu__focus.menu__focus_1
+					.menu__circle.menu__circle_1
+				.menu__focus.menu__focus_2
+					.menu__circle.menu__circle_2
+				.menu__focus.menu__focus_3
+					.menu__circle.menu__circle_3
+			button.menu__large-btn
+				.menu__names
+					.menu__name.menu__name_1 #{name}
+					.menu__name.menu__name_2 #{name}
+					h1.menu__name.menu__name_3 #{name}
+				.menu__logos
+					.menu__logo.menu__logo_1
+					.menu__logo.menu__logo_2
+					.menu__logo.menu__logo_3
+			nav.menu__nav
+				ul.menu__ul
+					li.menu__li.menu__li_1.menu-li
+						button.menu-li__button.menu-li__button_1
+							.menu-li__text.menu-li__text_1 #{b1}
+							.menu-li__text.menu-li__text_2 #{b1}
+							.menu-li__text.menu-li__text_3 #{b1}
+					li.menu__li.menu__li_2.menu-li
+						button.menu-li__button.menu-li__button_2
+							.menu-li__text.menu-li__text_1 #{b2}
+							.menu-li__text.menu-li__text_2 #{b2}
+							.menu-li__text.menu-li__text_3 #{b2}
+					li.menu__li.menu__li_3.menu-li
+						button.menu-li__button.menu-li__button_3
+							.menu-li__text.menu-li__text_1 #{b3}
+							.menu-li__text.menu-li__text_2 #{b3}
+							.menu-li__text.menu-li__text_3 #{b3}
+					li.menu__li.menu__li_4.menu-li
+						button.menu-li__button.menu-li__button_4
+							.menu-li__text.menu-li__text_1 #{b4}
+							.menu-li__text.menu-li__text_2 #{b4}
+							.menu-li__text.menu-li__text_3 #{b4}
+					li.menu__li.menu__li_5.menu-li
+						button.menu-li__button.menu-li__button_5
+							.menu-li__text.menu-li__text_1 #{b5}
+							.menu-li__text.menu-li__text_2 #{b5}
+							.menu-li__text.menu-li__text_3 #{b5}
+					li.menu__li.menu__li_6.menu-li
+						button.menu-li__button.menu-li__button_6
+							.menu-li__text.menu-li__text_1 #{b6}
+							.menu-li__text.menu-li__text_2 #{b6}
+							.menu-li__text.menu-li__text_3 #{b6}
+	.main
+		.main__tapfield
+		include _popup-index.pug
+.bottom-line © #{year} ООО Амата | Amata LTD
