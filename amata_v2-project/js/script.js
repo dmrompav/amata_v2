@@ -69,7 +69,7 @@ Resize(); // * Bubbles ================================
 
 (function () {
   var config = {
-    dotsQuantity: 40,
+    dotsQuantity: 30,
     dotMinRad: 1,
     dotMaxRad: 20,
     sphereRad: 300,
@@ -226,13 +226,13 @@ document.addEventListener('mousemove', function (e) {
   var rotationX = -(e.clientX - window.innerWidth / 2) / window.innerWidth * 30 - 7,
       rotationY = (e.clientY - window.innerHeight / 2) / window.innerHeight * 30 + 7;
   rotator.style.transform = 'rotateX(' + rotationY + 'deg) rotateY(' + rotationX + 'deg)';
-}, false);
-document.addEventListener('touchmove', function (e) {
-  var rotationX = -(e.changedTouches[0].pageX - window.innerWidth / 2) / window.innerWidth * 30 - 7,
-      rotationY = (e.changedTouches[0].pageY - window.innerHeight / 2) / window.innerHeight * 30 + 7;
-  rotator.style.transform = 'rotateX(' + rotationY + 'deg) rotateY(' + rotationX + 'deg)';
-  console.log(e.changedTouches[0].pageX);
-}, false); // central button mouse hover
+}, false); // document.addEventListener('touchmove', (e) => {
+// 	let rotationX = - (e.changedTouches[0].pageX - window.innerWidth / 2) / window.innerWidth * 30 - 7,
+// 		rotationY = (e.changedTouches[0].pageY - window.innerHeight / 2) / window.innerHeight * 30 + 7
+// 	rotator.style.transform = 'rotateX(' + rotationY + 'deg) rotateY(' + rotationX + 'deg)'
+// 	console.log(e.changedTouches[0].pageX)
+// }, false);
+// central button mouse hover
 
 centrlBtn.addEventListener('mouseover', function () {
   butNames.classList.add('menu__names--hover');
@@ -312,7 +312,7 @@ function LazyPopup(i) {
     if (j === lazy[i].length) {
       clearInterval(lazyInterval);
     }
-  }, 100);
+  }, 200);
 }
 
 function ClosePopUp() {

@@ -41,15 +41,16 @@ $lblue: #273c75
 		text-align: center
 
 	&__lazy
+		display: block
 		position: relative
-		left: -200px
 		opacity: 0
+		left: -200px
 
-		transition: left 0.2s, opacity 0.5s ease-in
+		transition: opacity 0.3s ease-out, left 0.2s
 
 		&--opened
-			left: 0
 			opacity: 1
+			left: 0
 
 	&__article
 
@@ -68,6 +69,7 @@ $lblue: #273c75
 
 	&__img
 		width: 50%
+		max-width: 350px
 		height: auto
 
 	&__a

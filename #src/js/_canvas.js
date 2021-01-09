@@ -1,7 +1,7 @@
 // * Bubbles ================================
 (() => {
 	const config = {
-		dotsQuantity: 40,
+		dotsQuantity: 30,
 		dotMinRad: 1,
 		dotMaxRad: 20,
 		sphereRad: 300,

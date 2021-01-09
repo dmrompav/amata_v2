@@ -5,13 +5,12 @@ document.addEventListener('mousemove', (e) => {
 		rotationY = (e.clientY - window.innerHeight / 2) / window.innerHeight * 30 + 7
 	rotator.style.transform = 'rotateX(' + rotationY + 'deg) rotateY(' + rotationX + 'deg)'
 }, false)
-
-document.addEventListener('touchmove', (e) => {
-	let rotationX = - (e.changedTouches[0].pageX - window.innerWidth / 2) / window.innerWidth * 30 - 7,
-		rotationY = (e.changedTouches[0].pageY - window.innerHeight / 2) / window.innerHeight * 30 + 7
-	rotator.style.transform = 'rotateX(' + rotationY + 'deg) rotateY(' + rotationX + 'deg)'
-	console.log(e.changedTouches[0].pageX)
-}, false);
+// document.addEventListener('touchmove', (e) => {
+// 	let rotationX = - (e.changedTouches[0].pageX - window.innerWidth / 2) / window.innerWidth * 30 - 7,
+// 		rotationY = (e.changedTouches[0].pageY - window.innerHeight / 2) / window.innerHeight * 30 + 7
+// 	rotator.style.transform = 'rotateX(' + rotationY + 'deg) rotateY(' + rotationX + 'deg)'
+// 	console.log(e.changedTouches[0].pageX)
+// }, false);
 
 // central button mouse hover
 centrlBtn.addEventListener('mouseover', () => {butNames.classList.add('menu__names--hover')}, false)
@@ -80,7 +79,7 @@ function LazyPopup(i) {
 		if (j === lazy[i].length) {
 			clearInterval(lazyInterval)
 		}
-	}, 100)
+	}, 200)
 }
 
 function ClosePopUp() {
