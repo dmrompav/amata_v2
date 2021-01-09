@@ -1,5 +1,5 @@
 // ! ============ VIEW ============================
-let maxSize, minSize
+let maxSize, minSize, w, h
 
 window.addEventListener("resize", Resize, false)
 function Resize() {
@@ -11,6 +11,8 @@ function Resize() {
 		maxSize = window.innerWidth
 		minSize = window.innerHeight
 	}
+	w				= maxSize
+	h				= maxSize
 	canvas.width	= maxSize
 	canvas.height	= maxSize
 	if(minSize < 650) {

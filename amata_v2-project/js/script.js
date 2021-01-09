@@ -31,7 +31,7 @@ for (var i = 0; i < popup.length; i++) {
 } // ! ============ VIEW ============================
 
 
-var maxSize, minSize;
+var maxSize, minSize, w, h;
 window.addEventListener("resize", Resize, false);
 
 function Resize() {
@@ -43,6 +43,8 @@ function Resize() {
     minSize = window.innerHeight;
   }
 
+  w = maxSize;
+  h = maxSize;
   canvas.width = maxSize;
   canvas.height = maxSize;
 
@@ -82,7 +84,7 @@ Resize(); // * Bubbles ================================
   };
   var TWO_PI = 2 * Math.PI;
   var ctx = canvas.getContext("2d");
-  var w, h, mouse, dots;
+  var mouse, dots;
 
   var Dot = /*#__PURE__*/function () {
     function Dot(r) {
@@ -173,8 +175,8 @@ Resize(); // * Bubbles ================================
   }
 
   function init() {
-    w = canvas.width = maxSize;
-    h = canvas.height = maxSize;
+    w = canvas.width = maxSize * 1;
+    h = canvas.height = maxSize * 1;
     mouse = {
       x: w / 2,
       y: h / 2,

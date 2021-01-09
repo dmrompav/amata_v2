@@ -16,7 +16,7 @@
 	}
 	const TWO_PI = 2 * Math.PI;
 	const ctx = canvas.getContext(`2d`);
-	let w, h, mouse, dots;
+	let mouse, dots;
 	class Dot {
 		constructor(r) {
 			this.pos = { x: mouse.x, y: mouse.y }
@@ -71,8 +71,8 @@
 		return Math.random() * (max - min) + min;
 	}
 	function init() {
-		w = canvas.width = maxSize;
-		h = canvas.height = maxSize;
+		w = canvas.width = maxSize * 1;
+		h = canvas.height = maxSize * 1;
 		mouse = { x: w / 2, y: h / 2, down: false }
 		dots = [];
 		dots.push(new Dot(config.bigDotRad));
