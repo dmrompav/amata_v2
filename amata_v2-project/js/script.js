@@ -23,10 +23,16 @@ var body = document.querySelector('.body'),
     liBut = document.querySelectorAll('.menu-li__button'),
     main = document.querySelector('.main'),
     tapfield = document.querySelector('.main__tapfield'),
-    popup = document.querySelectorAll('.main__popup'); // ! ============ VIEW ============================
+    popup = document.querySelectorAll('.main__popup'),
+    lazy = [];
+
+for (var i = 0; i < popup.length; i++) {
+  lazy[i] = popup[i].querySelectorAll('.popup__lazy');
+} // ! ============ VIEW ============================
+
 
 var maxSize, minSize;
-document.addEventListener("resize", Resize, false);
+window.addEventListener("resize", Resize, false);
 
 function Resize() {
   if (window.innerWidth < window.innerHeight) {
@@ -37,8 +43,24 @@ function Resize() {
     minSize = window.innerHeight;
   }
 
-  canvas.width = maxSize * 2;
-  canvas.height = maxSize * 2;
+  canvas.width = maxSize;
+  canvas.height = maxSize;
+
+  if (minSize < 650) {
+    li.forEach(function (e) {
+      e.classList.add('mobile');
+    });
+    liBut.forEach(function (e) {
+      e.classList.add('mobile');
+    });
+  } else {
+    li.forEach(function (e) {
+      e.classList.remove('mobile');
+    });
+    liBut.forEach(function (e) {
+      e.classList.remove('mobile');
+    });
+  }
 }
 
 Resize(); // * Bubbles ================================
@@ -101,15 +123,15 @@ Resize(); // * Bubbles ================================
   }();
 
   function updateDots() {
-    for (var i = 1; i < dots.length; i++) {
+    for (var _i = 1; _i < dots.length; _i++) {
       var acc = {
         x: 0,
         y: 0
       };
 
       for (var j = 0; j < dots.length; j++) {
-        if (i == j) continue;
-        var _ref = [dots[i], dots[j]],
+        if (_i == j) continue;
+        var _ref = [dots[_i], dots[j]],
             a = _ref[0],
             b = _ref[1];
         var delta = {
@@ -129,8 +151,8 @@ Resize(); // * Bubbles ================================
         acc.y += delta.y * force;
       }
 
-      dots[i].vel.x = dots[i].vel.x * config.smooth + acc.x * dots[i].mass;
-      dots[i].vel.y = dots[i].vel.y * config.smooth + acc.y * dots[i].mass;
+      dots[_i].vel.x = dots[_i].vel.x * config.smooth + acc.x * dots[_i].mass;
+      dots[_i].vel.y = dots[_i].vel.y * config.smooth + acc.y * dots[_i].mass;
     }
 
     dots.map(function (e) {
@@ -151,8 +173,8 @@ Resize(); // * Bubbles ================================
   }
 
   function init() {
-    w = canvas.width = maxSize * 2;
-    h = canvas.height = maxSize * 2;
+    w = canvas.width = maxSize;
+    h = canvas.height = maxSize;
     mouse = {
       x: w / 2,
       y: h / 2,
@@ -199,9 +221,15 @@ Resize(); // * Bubbles ================================
 
 
 document.addEventListener('mousemove', function (e) {
-  var rotationX = -(e.clientX - window.innerWidth / 2) / window.innerWidth * 40 - 7,
-      rotationY = (e.clientY - window.innerHeight / 2) / window.innerHeight * 40 + 7;
+  var rotationX = -(e.clientX - window.innerWidth / 2) / window.innerWidth * 30 - 7,
+      rotationY = (e.clientY - window.innerHeight / 2) / window.innerHeight * 30 + 7;
   rotator.style.transform = 'rotateX(' + rotationY + 'deg) rotateY(' + rotationX + 'deg)';
+}, false);
+document.addEventListener('touchmove', function (e) {
+  var rotationX = -(e.changedTouches[0].pageX - window.innerWidth / 2) / window.innerWidth * 30 - 7,
+      rotationY = (e.changedTouches[0].pageY - window.innerHeight / 2) / window.innerHeight * 30 + 7;
+  rotator.style.transform = 'rotateX(' + rotationY + 'deg) rotateY(' + rotationX + 'deg)';
+  console.log(e.changedTouches[0].pageX);
 }, false); // central button mouse hover
 
 centrlBtn.addEventListener('mouseover', function () {
@@ -268,8 +296,21 @@ function OpenPopUp() {
       close.classList.add('main__close');
       close.innerHTML = 'X';
       close.addEventListener('click', ClosePopUp, false);
+      LazyPopup(indexOfPopup);
     }
   });
+}
+
+function LazyPopup(i) {
+  var j = 0;
+  var lazyInterval = setInterval(function () {
+    lazy[i][j].classList.add('popup__lazy--opened');
+    j++;
+
+    if (j === lazy[i].length) {
+      clearInterval(lazyInterval);
+    }
+  }, 100);
 }
 
 function ClosePopUp() {
@@ -278,4 +319,7 @@ function ClosePopUp() {
   body.classList.remove('body--popup-opened');
   popup[indexOfPopup].classList.remove('main__popup--opened');
   popup[indexOfPopup].querySelector('.main__close').remove();
+  lazy[indexOfPopup].forEach(function (e) {
+    e.classList.remove('popup__lazy--opened');
+  });
 }

@@ -71,8 +71,8 @@
 		return Math.random() * (max - min) + min;
 	}
 	function init() {
-		w = canvas.width = maxSize * 2;
-		h = canvas.height = maxSize * 2;
+		w = canvas.width = maxSize;
+		h = canvas.height = maxSize;
 		mouse = { x: w / 2, y: h / 2, down: false }
 		dots = [];
 		dots.push(new Dot(config.bigDotRad));

@@ -9,16 +9,15 @@ $lred: #e84118
 $dblue: #192a56
 $lblue: #273c75
 
-@font-face
-	font-family: Oswald
-	src: url("../fonts/Oswald-Regular.woff2") format("woff2")
-	src: url("../fonts/Oswald-regular.woff") format("woff")
+// @font-face
+// 	font-family: Oswald
+// 	src: url("../fonts/Oswald-Regular.woff2") format("woff2")
+// 	src: url("../fonts/Oswald-regular.woff") format("woff")
 
 
 // !===== STYLES ================
 *
 	transform-style: preserve-3d
-	// cursor: none
 
 .body
 	position: absolute
@@ -72,6 +71,8 @@ $lblue: #273c75
 	background-color: rgba($black, 0.5)
 	text-align: center
 
+	user-select: none
+
 // ! === MENU ===
 
 .central-btn
@@ -83,7 +84,9 @@ $lblue: #273c75
 
 	transform: translateZ(200px)
 
-	border: 1px solid black
+	// border: 1px solid black
+
+	cursor: pointer
 
 .rotator
 	position: absolute
@@ -106,10 +109,12 @@ $lblue: #273c75
 	justify-content: center
 	align-items: center
 
-	// transition: transform 0.3s 0.3s
+	transform: scale(1)
+
+	transition: transform 0.1s
 
 	&--hidden
-		// transition: transform 0.3s
+		// transition: transform 0.2s 0.2s
 		transform: scale(0)
 
 	&__circles
@@ -189,6 +194,8 @@ $lblue: #273c75
 		align-items: center
 
 		animation: ul-rotate 3s infinite alternate
+
+		cursor: pointer
 
 	&__names
 		width: 0px
@@ -303,6 +310,21 @@ $lblue: #273c75
 		width: 200px
 		height: 38px
 
+		cursor: pointer
+
+		&_1.mobile
+			top: -200px
+		&_2.mobile
+			top: -150px
+		&_3.mobile
+			top: -100px
+		&_4.mobile
+			top: -100px
+		&_5.mobile
+			top: -150px
+		&_6.mobile
+			top: -200px
+
 	&__text
 		user-select: none
 
@@ -370,16 +392,16 @@ $lblue: #273c75
 		max-width: 800px
 		height: auto
 		max-height: 80vh
-		padding: 40px 10px
-		background-color: rgba($black, 0.05)
+		padding: 40px 20px
+		background-color: rgba($black, 0.3)
 		// border-radius: 10px
 
-		transition: transform 0.3s
+		transition: transform 0.1s
 
 		transform: scale(0)
 
 		&--opened
-			transition: transform 0.3s
+			// transition: transform 0.1s 0.1s
 			transform: scale(1)
 
 		&_1
@@ -397,7 +419,7 @@ $lblue: #273c75
 		font-size: 30px
 		font-weight: 900
 
-		// cursor: pointer
+		cursor: pointer
 
 
 // ------------------
@@ -405,7 +427,6 @@ $lblue: #273c75
 // ------------------
 
 .menu
-	transition: transform 0.1s
 	&__circles
 		&--opened
 		&--opened>.menu__focus_1
@@ -451,6 +472,9 @@ $lblue: #273c75
 	&__li
 		transition: opacity 0.3s, transform 0.6s
 
+		&.mobile
+			transition: opacity 0.3s
+
 		&--opened
 
 			&:nth-child(1)
@@ -472,9 +496,34 @@ $lblue: #273c75
 				opacity: 1
 				transform: rotate(300deg)
 
+		&--opened.mobile
+
+			&:nth-child(1)
+				opacity: 1
+				transform: rotate(0deg)
+			&:nth-child(2)
+				opacity: 1
+				transform: rotate(0deg)
+			&:nth-child(3)
+				opacity: 1
+				transform: rotate(0deg)
+			&:nth-child(4)
+				opacity: 1
+				transform: rotate(180deg)
+			&:nth-child(5)
+				opacity: 1
+				transform: rotate(180deg)
+			&:nth-child(6)
+				opacity: 1
+				transform: rotate(180deg)
+
 .menu-li
 	&__button
 		transition: transform 0.6s
+
+		&.mobile
+			transition: none
+
 
 		&:hover>.menu-li__text_1
 		&:hover>.menu-li__text_2
@@ -498,3 +547,18 @@ $lblue: #273c75
 				transform: rotate(-240deg)
 			&.menu-li__button_6
 				transform: rotate(-300deg)
+
+		&--opened.mobile
+
+			&.menu-li__button_1
+				transform: rotate(0deg)
+			&.menu-li__button_2
+				transform: rotate(0deg)
+			&.menu-li__button_3
+				transform: rotate(0deg)
+			&.menu-li__button_4
+				transform: rotate(-180deg)
+			&.menu-li__button_5
+				transform: rotate(-180deg)
+			&.menu-li__button_6
+				transform: rotate(-180deg)

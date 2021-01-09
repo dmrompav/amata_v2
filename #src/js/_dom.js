@@ -16,4 +16,9 @@ const
 	liBut		= document.querySelectorAll('.menu-li__button'),
 	main		= document.querySelector('.main'),
 	tapfield	= document.querySelector('.main__tapfield'),
-	popup		= document.querySelectorAll('.main__popup');
+	popup		= document.querySelectorAll('.main__popup'),
+	lazy		= [];
+
+for (let i = 0; i < popup.length; i++) {
+	lazy[i] = popup[i].querySelectorAll('.popup__lazy')
+}

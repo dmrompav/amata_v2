@@ -1,10 +1,17 @@
 // ! ================= CONTROL ===================================
 // mouse move => menu rotate
 document.addEventListener('mousemove', (e) => {
-	let rotationX = - (e.clientX - window.innerWidth / 2) / window.innerWidth * 40 - 7,
-		rotationY = (e.clientY - window.innerHeight / 2) / window.innerHeight * 40 + 7
+	let rotationX = - (e.clientX - window.innerWidth / 2) / window.innerWidth * 30 - 7,
+		rotationY = (e.clientY - window.innerHeight / 2) / window.innerHeight * 30 + 7
 	rotator.style.transform = 'rotateX(' + rotationY + 'deg) rotateY(' + rotationX + 'deg)'
 }, false)
+
+document.addEventListener('touchmove', (e) => {
+	let rotationX = - (e.changedTouches[0].pageX - window.innerWidth / 2) / window.innerWidth * 30 - 7,
+		rotationY = (e.changedTouches[0].pageY - window.innerHeight / 2) / window.innerHeight * 30 + 7
+	rotator.style.transform = 'rotateX(' + rotationY + 'deg) rotateY(' + rotationX + 'deg)'
+	console.log(e.changedTouches[0].pageX)
+}, false);
 
 // central button mouse hover
 centrlBtn.addEventListener('mouseover', () => {butNames.classList.add('menu__names--hover')}, false)
@@ -60,8 +67,20 @@ function OpenPopUp() {
 			close.classList.add('main__close')
 			close.innerHTML = 'X'
 			close.addEventListener('click', ClosePopUp, false)
+			LazyPopup(indexOfPopup)
 		}
 	})
+}
+
+function LazyPopup(i) {
+	let j = 0
+	let lazyInterval = setInterval(() => {
+		lazy[i][j].classList.add('popup__lazy--opened')
+		j++
+		if (j === lazy[i].length) {
+			clearInterval(lazyInterval)
+		}
+	}, 100)
 }
 
 function ClosePopUp() {
@@ -70,4 +89,5 @@ function ClosePopUp() {
 	body.classList.remove('body--popup-opened')
 	popup[indexOfPopup].classList.remove('main__popup--opened')
 	popup[indexOfPopup].querySelector('.main__close').remove()
+	lazy[indexOfPopup].forEach((e) => {e.classList.remove('popup__lazy--opened')})
 }

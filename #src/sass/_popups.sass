@@ -9,10 +9,10 @@ $lred: #e84118
 $dblue: #192a56
 $lblue: #273c75
 
-@font-face
-	font-family: Oswald
-	src: url("../fonts/Oswald-Regular.woff2") format("woff2")
-	src: url("../fonts/Oswald-regular.woff") format("woff")
+// @font-face
+// 	font-family: Oswald
+// 	src: url("../fonts/Oswald-Regular.woff2") format("woff2")
+// 	src: url("../fonts/Oswald-regular.woff") format("woff")
 
 
 //! Параметры контейнера
@@ -22,29 +22,59 @@ $lblue: #273c75
 // padding: 40px 10px
 
 .popup
-	cursor: auto
+	font-size: 18px
 	color: $grey
 	::selection
 		background: $grey2
 	::-moz-selection
 		background: $grey2
 
+	cursor: auto
+
 	&__h2
+		width: 100%
 		margin: 0 0 10px 0
 
 		font-size: 20px
 		font-weight: 600
 		text-transform: uppercase
+		text-align: center
 
-	&__img
-	&__a
-		font-size: 18px
-		
+	&__lazy
+		position: relative
+		left: -200px
+		opacity: 0
+
+		transition: left 0.2s, opacity 0.5s ease-in
+
+		&--opened
+			left: 0
+			opacity: 1
+
+	&__article
+
 	&__h3
-	&__text
+		text-indent: 15px
 		margin: 10px 0
-		font-size: 18px
+		text-decoration: underline
+
+	&__text
+		text-indent: 15px
+		margin: 10px 0
 
 	&__important
 		color: $white
 		text-shadow: 0 0 10px $dred, 0 0 20px $dred
+
+	&__img
+		width: 50%
+		height: auto
+
+	&__a
+		margin-left: 15px
+		font-size: 18px
+
+		&--inherit
+			font-size: inherit
+			font-weight: inherit
+			text-transform: inherit
