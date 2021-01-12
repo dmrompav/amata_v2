@@ -2,13 +2,11 @@ install Node.js
 	// npm install
 	// gulp
 
-to edit html:
-	#src/html
 to edit html's head:
 	#src/head
 to edit pop-ups open:
-	#src/pug/'all-pug-files'
-	#src/sass/_popups.sass
+	#src/sass/_popup-index.pug
+	#src/sass/_popup.sass
 
 
 Author:	Dmitry
